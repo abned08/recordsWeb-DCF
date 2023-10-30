@@ -1,0 +1,94 @@
+    <nav th:fragment="mynavbar" xmlns:th="http://www.w3.org/1999/xhtml" class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+         style="height: auto;background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 400px, rgba(255, 255, 255, 1) 290px), url(/img/2.jpg) no-repeat;;background-size: 400px 128px;">
+        <form class="estText w-100" th:each="establishment:${estList}" method="get">
+            <h1 dir="rtl" class=" w-100 font-weight-bold text-center text-danger">وزارة الماليــــــة</h1>
+            <h2 dir="rtl" class=" w-100 font-weight-bold text-center text-danger"
+                th:text="${establishment.estname}"></h2>
+            <div class="float-right"
+                 style="background: linear-gradient(to left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 400px, rgba(255, 255, 255, 1) 290px), url(/img/flag.gif) no-repeat;;background-size: 400px 128px;height: 128px;margin: -120px;width: 470px;"></div>
+
+        </form>
+
+
+        <div class="myFormEst">
+            <form th:action="@{/saveEst}" method="post" class="needs-validation" novalidate>
+                <div class="modal fade" id="exampleModalEst" tabindex="-1"
+                     role="dialog" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title col text-center" id="exampleModalLabelEst">تعيــــــين الإدارة</h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="form-group" >
+                                    <label dir="rtl" for="estname" class="col-form-label float-right">إدارة ؟</label>
+                                    <input dir="rtl" type="text" id="estname" name="estname"   title="يرجى ذكر تسمية الإدارة بدون أرقام أو رموز" class="form-control" required />
+                                    <div class="invalid-feedback">
+                                        يرجى إدخال اسم الإدارة
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-secondary"
+                                        data-dismiss="modal">إغـلاق
+                                </button>
+                                <input type="submit" class="btn btn-sm btn-primary" value="حفــــظ"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <a href="#" id="fScreen" style="color: red;position: absolute;top: 10px;right: 20px;font-size: x-large;" onclick="openFullscreen();">
+            <i class="fas fa-fw fa-expand"></i>
+        </a>
+        <a href="#" id="nScreen" class="d-none" style="color: darkgreen;position: absolute;top: 10px;right: 20px;font-size: x-large;" onclick="closeFullscreen();">
+            <i class="fas fa-fw fa-compress"></i>
+        </a>
+
+
+        <script>
+
+            var elem = document.documentElement;
+
+            function openFullscreen() {
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { /* Firefox */
+                    elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                    elem.msRequestFullscreen();
+                }
+                $('#fScreen').addClass("d-none");
+                $('#nScreen').removeClass("d-none")
+            }
+
+            function closeFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+
+                $('#nScreen').addClass("d-none");
+                $('#fScreen').removeClass("d-none")
+            }
+        </script>
+    </nav>
+
+

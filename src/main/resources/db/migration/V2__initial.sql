@@ -1,0 +1,67 @@
+INSERT INTO establishment(estname) VALUES ('مديرية الحفظ العقاري ببشار');
+
+INSERT INTO services(servicename) values ('المفتشية الجهوية لأملاك الدولة والحفظ العقاري لناحية الجزائر');
+INSERT INTO services(servicename) values ('المفتشية الجهوية لأملاك الدولة والحفظ العقاري لناحية عنابة');
+INSERT INTO services(servicename) values ('المفتشية الجهوية لأملاك الدولة والحفظ العقاري لناحية بشار');
+INSERT INTO services(servicename) values ('المفتشية الجهوية لأملاك الدولة والحفظ العقاري لناحية البليدة');
+INSERT INTO services(servicename) values ('المفتشية الجهوية لأملاك الدولة والحفظ العقاري لناحية قسنطينة');
+INSERT INTO services(servicename) values ('المفتشية الجهوية لأملاك الدولة والحفظ العقاري لناحية ورقلة');
+INSERT INTO services(servicename) values ('المفتشية الجهوية لأملاك الدولة والحفظ العقاري لناحية وهران');
+INSERT INTO services(servicename) values ('المفتشية الجهوية لأملاك الدولة والحفظ العقاري لناحية غيلزان');
+INSERT INTO services(servicename) values ('المفتشية الجهوية لأملاك الدولة والحفظ العقاري لناحية بجاية');
+INSERT INTO services(servicename) values ('المخزون الأولي');
+
+INSERT INTO record_name(code, recname, recname_fr) values ('DO01','سجل الرسوم والإيرادات المثبتة للتحصيل','Sommier des droits constatés');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO02','سجل تفصيل الحساب (حسابات مفتوحة)','Sommier des décomptes c/o');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO11','سجل المصاريف','Registre des dépenses');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO12','سجل عمليات الخزينة','Sommier des opérations de trésorerie');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO13','سجل دفتر تسجيل العمليات في الحساب البريدي','Registre-carnet d''enregistrement des opérations au compte courant postal');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO18','اليومية المساعدة للإيرادات (دائن)','Journal auxiliaire des recettes "crédits" TR8');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO19','اليومية المساعدة للنفقات (مدين)','Journal auxiliaire des recettes "débits" TR8');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO20','السجل العام','Journal général');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO21','دفتر الأستاذ','Grand''livre général');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO29','سجل قسيمات وشهادات بيع السيارات','Registre à souches des certificats de ventes de matériels automobiles');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO33','بطاقات عقارات الدولة','Fiche d''immeubles domaniaux');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO39','جدول المحتويات','Etat de consistance d''immeubles domaniaux "titre"');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO56','سجل التقييمات','Registre des évaluations');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO59','سجل الإيجار والامتيازات المؤقتة على العقارات','Sommiers des baux et concessions temporaires d''immeubles');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO69','سجل المخالصات العامة للتحصيل','Quittancier général de perception');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO70','سجل الإكتشافات','Sommier de découvertes');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO71','سجل المحاسبة','Sommier de comptabilité');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO72','سجل الإحصاءات','Sommier de statistiques');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO74','دفتر الصندوق','Carnet de caisse');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO77','جدول الحقوق والمنتوجات المثبتة','Etat des droits et produits constaté');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO78','جدول بقايا التحصيل إلى غاية 31 ديسمبر','Etat des restes à recouvrer au 31 décembre');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO79','بيان عن المواد المقيدة من طرف موظف سامي','Situation des articles consigné par un employer supérieur');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO88','حساب التقيد المزدوج','Compte de consignation "double"');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO97','دفتر تسجيل الصكوك البنكية','Carnet d''enregistrement des cheques bancaire');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO104','سجل تسجيل الأوامر بالدفع وسندات التحصيل','Registre d''enregistrement des ordres de versement ou de titres de recouvrement');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO106','سجل الحسابات المفتوحة للأملاك تحت الحراسة القضائية','Sommier des comptes ouverts des biens séquestrés');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO108','سجل حفظ الوثائق والملفات','Registre de classement de documents');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO109','سجل جرد وثائق محفوظات أملاك الدولة والحفظ العقاري','Registre d''inventaire de documents d''archives dominiaux et fonciers');
+INSERT INTO record_name(code, recname, recname_fr) values ('DO110','بيان وصفي للتقسيم','Etat descriptif de division');
+
+INSERT INTO record_name(code, recname, recname_fr) values ('PR01','البطاقة العقارية الريفية','Fiche parcellaire');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR02','البطاقة العقارية العامة','Fiche général d''immeuble');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR03','البطاقة الخاصة للملكية المشتركة','Fiche parcellaire de copropriété');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR04','ملخص العقد','Extrait d''acte');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR04 bis','ملخص العقد، ملخص المسح','Extrait d''acte et extrait cadastral');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR05','الدفتر العقاري','Livre foncier');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR10','البطاقة الشخصية','Fiche pérsonnelle');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR11','البطاقة الأبجدية','Fiche alphabétique');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR13','تغيير في تعيين الأشخاص الطبيعية والأشخاص المعنوية','Changement dans la désignation des personnes physiques et des personnes morales');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR17','سجل تسجيلات المحاضر المرسلة للمحافظة العقارية','Registre d''inscription des procés-verbaux transmis à la conservation fonciere');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR18','سجل إيداع الكشوف والسندات للإشهار','Registre de depots de bordereaux');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR23','سجل إيداع الجداول المتعلقة بالإجراء الأولي','Registre de dépot des bordereaux relatif à la premiere formalité');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR24','سجل مخصص لإيداع الملاحظات والمعارضات','Registre destiné à la consignation des constatations ou oppositions');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR27','السجل اليومي للمحافظ','Registre journal des conservateurs');
+INSERT INTO record_name(code, recname, recname_fr) values ('PR28','سجل الخدمات والإيرادات','Journal des recettes et prestations');
+
+INSERT INTO record_name(code, recname, recname_fr) values ('BNA','سجل الأملاك المخصصة','Sommier des biens nouvaux affectes');
+INSERT INTO record_name(code, recname, recname_fr) values ('BNNA','سجل الأملاك غير المخصصة','Sommier des biens nouvaux non affectes');
+INSERT INTO record_name(code, recname, recname_fr) values ('RTA','الفهرس الأبجدي','Registre table alphabitique');
+INSERT INTO record_name(code, recname, recname_fr) values ('FIIM','بطاقة تعريف العقار','Fiche d''entification d''immeuble');
+INSERT INTO record_name(code, recname, recname_fr) values ('RDCW','السجل الولائي للحقوق المعاينة','Registre des droits constatés inter wilaya');
+INSERT INTO record_name(code, recname, recname_fr) values ('RDCI','سجل ما بين البلديات للحقوق المعاينة','Registre des droits constatés inter communal');
+
+INSERT INTO record_name(code, recname, recname_fr) values ('CF04','دفتر طلب المعلومات','Registre des réquisitions de renseignements');

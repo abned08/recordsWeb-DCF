@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+
+<head th:include="fragments/head :: myhead">
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div th:insert="fragments/OS_sidebar::mysidebar"></div>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav th:replace="fragments/navbar :: mynavbar">
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <div class="myForm">
+                    <form th:action="@{/OS_saveRep}" method="post">
+                        <div class="modal-draggable-icon modal fade" id="exampleModal" tabindex="-1"
+                             role="dialog" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">حفظ / تعديل التقرير</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group d-none">
+                                            <label for="id" class="col-form-label">:الكود</label> <input
+                                                type="text" class="form-control" id="id" name="id"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="float-right" for="recordName">:المستلزمــة</label>
+                                            <input dir="rtl" type="text" class="form-control" id="recordName"
+                                                   name="recordName" readonly/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="float-right" for="code">:الرمــز</label>
+                                            <input dir="rtl" type="text" class="form-control" id="code"
+                                                   name="code" readonly/>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="quantity" class="float-right col-form-label">:الكميــة
+                                                المتوفـرة</label>
+                                            <input dir="rtl" type="text" class="form-control" id="quantity"
+                                                   name="quantity" readonly/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="quantityDemand" class="float-right col-form-label">:الكميــة
+                                                المطلوبـة</label>
+                                            <input dir="rtl" type="text" class="form-control" id="quantityDemand"
+                                                   name="quantityDemand"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="note" class="float-right col-form-label">:الملاحــظة</label>
+                                            <input dir="rtl" type="text" class="form-control" id="note"
+                                                   name="note"/>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-sm btn-secondary"
+                                                data-dismiss="modal">إغـــلاق
+                                        </button>
+                                        <input type="submit" class="btn btn-sm btn-primary" value="حفــــظ"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-center text-gray-800">التقريــر</h1>
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div dir="rtl" th:object="${dateOfReport}"  class="w-100 mt-3" align="center">
+                        <h3 class="text-primary font-weight-bold">    تاريخ التقـــــرير
+                            <span class="text-danger font-weight-bold" th:text="${dateOfReport}?${dateOfReport}:'* * *'"></span>
+                        </h3>
+                    </div>
+                    <div id="date-container" class="span5 col-md-5">
+                        <form id="dateForm" th:action="@{/OS_dateReport}" method="post" class="dateForm needs-validation" novalidate>
+                            <h6 class="mb-2 m-3 font-weight-bold text-primary">تاريخ التقريــر</h6>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="dateReport" name="dateReport"
+                                       placeholder="حدد تاريخ التقرير" required/>
+
+                                <div class="input-group-append">
+                                    <button href type="submit" class="btn btn-sm btn-primary font-weight-bold" style="line-height: 1;">عــرض
+                                        التقـرير
+                                    </button>
+                                    <a href="/OS_report" class="btn btn-accent-1" role="button" target="_blank" data-toggle="tooltip" data-placement="top"
+                                       title="طباعة التقرير"><i class="fas fa-fw fa-print"></i></a>
+
+
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="col text-center">
+                            <!-- 			  <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table dir="rtl" class="table text-right table-striped table-bordered table-hover"
+                                   id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th class="d-none">ID</th>
+                                    <th>تعيين وتسمية المستلزمــة</th>
+<!--                                    <th>الرمز</th>-->
+                                    <th>الكمية المتوفرة</th>
+                                    <th>الكمية المطلوبة</th>
+                                    <th>ملاحظــة</th>
+                                    <th></th>
+
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th class="d-none">ID</th>
+                                    <th>تعيين وتسمية المستلزمــة</th>
+<!--                                    <th>الرمز</th>-->
+                                    <th>الكمية المتوفرة</th>
+                                    <th>الكمية المطلوبة</th>
+                                    <th>ملاحظــة</th>
+                                    <th></th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <tr th:each="report:${reportList}">
+                                    <td class="d-none" th:text="${report.id}">ID</td>
+                                    <td th:text="${report.recordName}">تعيين وتسمية المستلزمــة</td>
+<!--                                    <td th:text="${report.code}">الرمز</td>-->
+                                    <td class="text-center" th:text="${report.quantity}">الكمية المتوفرة</td>
+                                    <td class="text-center"
+                                        th:text="${report.quantityDemand}?${report.quantityDemand}:''">الكمية المطلوبة
+                                    </td>
+                                    <td th:text="${report.note}">ملاحظــة</td>
+                                    <td>
+                                        <a dir="ltr" th:href="@{OS_findRep/(id=${report.id})}"
+                                           class="btn btn-sm btn-primary my-1 my-sm-0 editBtn"><span
+                                                class="fas fa-edit mr-1"></span>تعديل</a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <div th:insert="fragments/footer::foot"></div>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/jquery-ui.min.js"></script>
+
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="vendor/dataTables.fixedHeader.js"></script>
+
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/bootstrap-datepicker.ar.min.js" charset="UTF-8"></script>
+<script src="/js/bootstrap-select.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/reportList.js"></script>
+
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+
+
+<div class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <script>
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
+</body>
+
+</html>

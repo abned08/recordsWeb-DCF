@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+
+<head th:include="fragments/head :: myhead">
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div th:insert="fragments/OS_sidebar::mysidebar"></div>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav th:replace="fragments/navbar :: mynavbar">
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <div class="myForm">
+                    <form th:action="@{/OS_saveRec}" method="post" class="needs-validation" novalidate>
+                        <div class="modal-draggable-icon modal fade" id="exampleModal" tabindex="-1"
+                             role="dialog" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">حفظ/تعديل التسجــيل</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group d-none">
+                                            <label for="Id" class="col-form-label">:الكود</label> <input
+                                                type="text" class="form-control" id="Id" name="id"/>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group align-self-end col-md-1">
+                                                <button type="button" onclick="location.href='/OS_recordNameList'"
+                                                        class="btn btn-pill btn-success"><i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="form-group col-md-11">
+                                                <label class="float-right" for="recordName">:المطبوع</label>
+                                                <select dir="ltr" id="recordName" class="form-control recordName"
+                                                        th:field="${records.recordName.id}" required tabindex="1">
+                                                    <option value="">قم بتحديد مطبوع </option>
+                                                    <option th:each="recordName:${recNameList}"
+                                                            th:value="${recordName.id}"
+                                                            th:text="${recordName.recname}"></option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    يرجى تحديد مطبوع
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div id="date-container" class="form-group">
+                                            <label class="float-right col-form-label">:التاريــخ</label>
+                                            <input type="text" class="form-control" id="recorddate"
+                                                   name="recorddate" tabindex="2" required/>
+                                            <div class="invalid-feedback">
+                                                يرجى اختيار التاريخ
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class=" form-group align-self-end col">
+                                                <label for="count" class="float-left col-form-label">:الكمية
+                                                    المتبقية</label>
+                                                <input dir="rtl" type="text" class="form-control" id="count"
+                                                       name="count" tabindex="-1" readonly/>
+                                            </div>
+
+
+                                            <div class="form-group col">
+                                                <label for="invent" class="float-right col-form-label">:الكميــة</label>
+                                                <input dir="rtl" type="text" class="form-control" id="quantity"
+                                                       name="quantity" tabindex="3" required/>
+                                                <div class="invalid-feedback">
+                                                    يرجى تحديد الكمية
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div id="input_container" class="form-group mb-5">
+                                            <div class="float-right custom-control custom-radio">
+                                                <input class="d-none" type="radio" name="recIn" id="recIn"/>
+                                                <input class="custom-control-input" type="radio" name="radio"
+                                                       id="recordin" value="option1" tabindex="5" disabled>
+                                                <label class="custom-control-label" for="recordin">: دخــول</label>
+                                            </div>
+                                            <div class="float-right mr-md-3 custom-control custom-radio">
+                                                <input class="custom-control-input" type="radio" name="radio"
+                                                       id="recordout" value="option2" tabindex="4" disabled>
+                                                <label class="custom-control-label" for="recordout">: خـــروج</label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="invent" class="float-right col-form-label">:رقم الجــرد</label>
+                                            <input dir="rtl" type="text" class="form-control" id="invent"
+                                                   name="invent" tabindex="6"/>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group align-self-end col-md-1">
+                                                <button type="button" onclick="location.href='/serviceList'"
+                                                        class="btn btn-pill btn-success"><i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="form-group col-md-11">
+                                                <label for="servicename"
+                                                       class="float-right col-form-label">:المصلحة</label>
+                                                <select dir="ltr" id="servicename" class="selectpicker form-control" data-style="btn-primary" data-live-search="true"
+                                                        th:field="${records.services.serviceid}" tabindex="7" required>
+                                                    <option value="">قم بتحديد مصلحة</option>
+                                                    <option th:each="service:${serNameList}"
+                                                            th:value="${service.serviceid}"
+                                                            th:text="${service.servicename}"></option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    يرجى تحديد المصلحة
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-sm btn-secondary"
+                                                data-dismiss="modal" tabindex="9">إغـــلاق
+                                        </button>
+                                        <input type="submit" id="submit" class="btn btn-sm btn-primary" value="حفــــظ"
+                                               tabindex="8"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">تأكــيد الحــذف</h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- 					<p class="alert alert-danger">Are you sure you want to delete -->
+                                <!-- 						it?</p> -->
+                                <p>هل أنت متأكد من الحذف ؟</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-secondary"
+                                        data-dismiss="modal">إغــلاق
+                                </button>
+                                <a href="" class="btn btn-sm btn-danger" id="delRef">حــذف</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-center text-gray-800">التسجيــــلات الكليــــــة للمستلزمـــــات</h1>
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="mb-2 m-0 font-weight-bold text-primary">قائمة التسجيــــلات</h6>
+                        <div class="col text-center">
+                            <!--                            <button class="btn btn-sm btn-lg btn-block btn-success newAddRecordsBtn">إضافة تسجيـــــل-->
+                            <!--                            </button>-->
+                            <!-- 			  <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table dir="rtl" class="table text-right table-striped table-bordered table-hover"
+                                   id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th class="d-none">ID</th>
+                                    <th width="180px">اللازمة</th>
+                                    <th width="115px">التاريخ</th>
+                                    <th width="100px">دخـول</th>
+                                    <th width="100px">خـروج</th>
+                                    <th width="100px">رقم الجرد</th>
+                                    <th style="width: 80px;">المصلحة</th>
+                                    <th class="d-none" style="width: 1px;"></th>
+
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th class="d-none">ID</th>
+                                    <th>اللازمة</th>
+                                    <th>التاريخ</th>
+                                    <th>دخـول</th>
+                                    <th>خـروج</th>
+                                    <th>رقم الجرد</th>
+                                    <th>المصلحة</th>
+                                    <th class="d-none"></th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <tr th:each="records:${recordsList}">
+                                    <td class="d-none" th:text="${records.id}">ID</td>
+                                    <td th:text="${records.recordName.recname}" data-toggle="tooltip" data-placement="top"
+                                        th:title="${records.recordName.code}">اللازمة
+                                    </td>
+                                    <td th:text="${records.recorddate}">التاريخ</td>
+                                    <td class="text-danger text-center"
+                                        th:text="${records.recordin}?${records.recordin}:''">دخـول
+                                    </td>
+                                    <td class="text-success text-center"
+                                        th:text="${records.recordout}?${records.recordout}:''">
+                                        خـروج
+                                    </td>
+                                    <td class="text-center" th:text="${records.invent}">رقم الجرد</td>
+                                    <td th:text="${records.services.servicename}">المصلحة</td>
+                                    <td class="d-none">
+                                        <a dir="ltr" th:href="@{OS_findRec/(id=${records.id})}"
+                                           class="btn btn-sm btn-primary my-1 my-sm-0 editBtn"><span
+                                                class="fas fa-edit mr-1"></span>تعديل</a>
+                                        <!--                                        <a dir="ltr" th:href="@{OS_deleteRec/(id=${records.id})}"-->
+                                        <!--                                           class="btn btn-sm btn-danger my-1 my-sm-0 delBtn"><span-->
+                                        <!--                                                class="fas fa-trash mr-1"></span>حــذف</a>-->
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <div th:insert="fragments/footer::foot"></div>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/jquery-ui.min.js"></script>
+
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="vendor/dataTables.fixedHeader.js"></script>
+
+
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/bootstrap-datepicker.ar.min.js" charset="UTF-8"></script>
+<script src="/js/bootstrap-select.min.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="js/recordsList.js"></script>
+
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+
+
+<div class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <script>
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
+</body>
+
+</html>

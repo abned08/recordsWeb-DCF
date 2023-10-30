@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar"
+    style="transition: 0.5s;" th:fragment="mysidebar" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <!-- Sidebar - Brand -->
+    <a href="/" class="sidebar-brand d-flex align-items-center justify-content-center">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <img class="w-75" src="../img/icon.png"/>
+        </div>
+        <div class="sidebar-brand-text mx-3">برنامج المطبوعات <sup>V1</sup></div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item active bg-primary">
+        <a class="nav-link" href="/recordsList">
+            <i class="fas fa-fw fa-address-card"></i>
+            <span>المطبـــوعات</span></a>
+    </li>
+
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item" style="font-weight: bold;">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-book"></i>
+            <span>المدخــلات</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">
+
+                    <span>:المعاملات بين الإدخال والإخراج</span>
+                </h6>
+                <a class="collapse-item" href="/OS_orderBondList">دخــــــول</a>
+                <a class="collapse-item" href="/OS_receivingList">خــــــروج</a>
+                <a class="collapse-item" href="/OS_recordsList">التسجيــلات</a>
+            </div>
+        </div>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <li class="nav-item active">
+        <a class="nav-link" href="/OS_recordNameList">
+            <i class="fas fa-fw fa-table"></i>
+            <span>اللـــوازم المكتبيــة</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <li class="nav-item active">
+        <a class="nav-link" href="/OS_serviceList">
+            <i class="fas fa-fw fa-briefcase"></i>
+            <span>المصــالح</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <li class="nav-item" style="font-weight: bold;">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1"
+           aria-expanded="true" aria-controls="collapseTwo1">
+            <i class="fas fa-fw fa-print"></i>
+            <span>التقــارير</span>
+        </a>
+        <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+
+                <a class="collapse-item" href="/OS_reportList">المخــزون الكلـي</a>
+                <a class="collapse-item" href="/OS_safetyStock">مخــزون الأمــان</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>
+
+</body>
+</html>

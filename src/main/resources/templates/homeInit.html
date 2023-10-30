@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <link rel="icon" href="/img/icon.png">
+    <title>الرئيسية</title>
+
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/btnArrow.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/bootstrap4-charming.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+
+
+    <link rel="stylesheet" th:href="@{/css/home.css}"/>
+
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="height: auto;background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 400px, rgba(255, 255, 255, 1) 290px), url(/img/2.jpg) no-repeat;;background-size: 400px 128px;">
+                <form class="estText w-100" style="margin-top: 110px;">
+                    <div class="float-right" style="background: linear-gradient(to left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 400px, rgba(255, 255, 255, 1) 290px), url(/img/flag.gif) no-repeat;;background-size: 400px 128px;height: 128px;margin: -120px;width: 470px;"></div>
+
+                </form>
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+
+                <div class="cont">
+                    <div class="mouse"></div>
+                    <div class="app">
+                        <div class="app__bgimg">
+                            <div class="app__bgimg-image app__bgimg-image--1">
+                            </div>
+                            <div class="app__bgimg-image app__bgimg-image--2">
+                            </div>
+                        </div>
+                        <div class="app__img">
+                            <img onmousedown="return false" src="/img/whiteTest4.png" alt="city" />
+                        </div>
+
+                        <div class="app__text app__text--1">
+                            <div class="app__text-line app__text-line--4">برنامج تسيير المطبوعات </div>
+                            <div class="app__text-line app__text-line--3">الخاص بإدارة الأملاك الوطنية</div>
+                            <div class="app__text-line app__text-line--2">الخلية الجهوية للبرمجة بشار </div>
+                            <div class="app__text-line app__text-line--1"><img src="/img/icon.png" alt="" /></div>
+                        </div>
+
+                        <div class="app__text app__text--2">
+                            <div class="app__text-line app__text-line--4">النسخة 1.0</div>
+                            <div class="app__text-line app__text-line--3">مرحبا بك..</div>
+<!--                            <div class="app__text-line app__text-line&#45;&#45;2">لمزيد من الدعم يرجى التواصل: 0675807075</div>-->
+                            <div class="app__text-line app__text-line--1"><img src="/img/icon.png" alt="" /></div>
+                        </div>
+                    </div>
+                    <div class="pages">
+                        <ul class='pages__list'>
+                            <li data-target='1' class='pages__item pages__item--1 page__item-active'></li>
+                            <li data-target='2' class='pages__item pages__item--2'></li>
+                        </ul>
+                    </div>
+                </div>
+
+<!--                <a href="https://twitter.com/mrspok407" target="_blank" class="icon-link icon-link&#45;&#45;twitter">-->
+<!--                    <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">-->
+<!--                </a>-->
+
+                <a href="/initialList" class="btn btn-sm btn-lg btn-block btn-success" >ابـــــدأ</a>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+<!--        <footer class="sticky-footer bg-white">-->
+<!--            <div class="container my-auto">-->
+<!--                <div class="copyright text-center my-auto">-->
+<!--                    <span>Copyright &copy; Records <script>document.write(new Date().getFullYear())</script></span>-->
+<!--                    <br>-->
+<!--                    <span>Developed and designed by Aboubaker Nedjimi:abned7@icloud.com</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </footer>-->
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/jquery-ui.min.js"></script>
+
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+
+
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+        const $app = $('.app');
+        const $img = $('.app__img');
+        const $pageNav1 = $('.pages__item--1');
+        const $pageNav2 = $('.pages__item--2');
+        let animation = true;
+        let curSlide = 1;
+        let scrolledUp, nextSlide;
+
+        let pagination = function(slide, target) {
+            animation = true;
+            if (target === undefined) {
+                nextSlide = scrolledUp ? slide - 1 : slide + 1;
+            } else {
+                nextSlide = target;
+            }
+
+            $('.pages__item--' + nextSlide).addClass('page__item-active');
+            $('.pages__item--' + slide).removeClass('page__item-active');
+
+            $app.toggleClass('active');
+            setTimeout(function() {
+                animation = false;
+            }, 3000)
+        }
+
+        let navigateDown = function() {
+            if (curSlide > 1) return;
+            scrolledUp = false;
+            pagination(curSlide);
+            curSlide++;
+        }
+
+        let navigateUp = function() {
+            if (curSlide === 1) return;
+            scrolledUp = true;
+            pagination(curSlide);
+            curSlide--;
+        }
+
+        setTimeout(function() {
+            $app.addClass('initial');
+        }, 1500);
+
+        setTimeout(function() {
+            animation = false;
+        }, 4500);
+
+        $(document).on('mousewheel DOMMouseScroll', function(e) {
+            var delta = e.originalEvent.wheelDelta;
+            if (animation) return;
+            if (delta > 0 || e.originalEvent.detail < 0) {
+                navigateUp();
+            } else {
+                navigateDown();
+            }
+        });
+
+        $(document).on("click", ".pages__item:not(.page__item-active)", function() {
+            if (animation) return;
+            let target = +$(this).attr('data-target');
+            pagination(curSlide, target);
+            curSlide = target;
+        });
+    });
+</script>
+
+<div class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <script>
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
+</body>
+
+</html>

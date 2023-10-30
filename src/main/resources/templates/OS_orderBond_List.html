@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+
+<head th:include="fragments/head :: myhead">
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div th:replace="fragments/OS_sidebar::mysidebar"></div>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav th:replace="fragments/navbar :: mynavbar">
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <div class="myForm">
+                    <form th:action="@{/OS_saveOrderBond}" method="post" enctype="multipart/form-data"
+                          class="needs-validation" novalidate>
+                        <div class="modal-draggable-icon modal fade" id="exampleModal" tabindex="-1"
+                             role="dialog" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title col text-center" id="exampleModalLabel">حفظ/تعديل
+                                            سند الطلبية</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group d-none">
+                                            <label for="Id" class="col-form-label">:الكود</label> <input
+                                                type="text" class="form-control" id="id" name="id"/>
+                                        </div>
+
+
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <label for="orderDate" class="float-right col-form-label">:تاريخ
+                                                    سند الطلبية</label>
+                                                <input dir="rtl" type="text" class="form-control"
+                                                       id="orderDate"
+                                                       name="orderDate" tabindex="2" required/>
+                                                <div class="invalid-feedback">
+                                                    يرجى تحديد تاريخ سند الطلبية
+                                                </div>
+                                            </div>
+                                            <div class="form-group col">
+                                                <label class="float-right col-form-label">:رقم سند الطلبية </label>
+                                                <input dir="rtl" type="text" class="form-control" id="orderNum"
+                                                       name="orderNum" tabindex="1" required/>
+                                                <div class="invalid-feedback">
+                                                    يرجى تحديد رقم سند الطلبية
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-row">
+                                            <div class="form-group align-self-end col-md-1">
+                                                <button type="button" id="btnAddService"
+                                                        class="btn btn-pill btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="form-group col-md-11">
+                                                <label for="servicename" class="float-right col-form-label">:المؤسسة أو الشركة أو المطبعة </label>
+                                                <select dir="ltr" id="servicename" name="servicename" class="selectpicker form-control" data-style="btn-primary" data-live-search="true"
+                                                        th:field="${orderBond.servicesOrderBond.serviceid}"
+                                                        tabindex="3" required>
+                                                    <option value="">قم بتحديد مصلحة</option>
+                                                    <option th:each="service:${serOrderBondList}"
+                                                            th:value="${service.serviceid}"
+                                                            th:text="${service.servicename}"></option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    حقـل ضــروي
+                                                </div>
+                                            </div>
+
+                                            <div class="collapse form-group col-md-12" id="collapseExample">
+                                                <input dir="rtl" type="text" placeholder="تعيين المصلحة الجديدة" class="form-control" id="serviceAdd"
+                                                       name="serviceAdd" />
+                                                <div class="invalid-feedback">
+                                                    يرجى تعيين المصلحة الجديدة
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="form-row">
+                                            <div class="d-none form-col">
+                                                <input type="text" class=" form-control" id="fName"
+                                                       name="fName"/>
+                                            </div>
+
+                                        </div>
+
+                                        <div dir="rtl" class="form-row" id="divFile">
+                                            <label for="file" id="fileLabel"
+                                                   class="float-right col-form-label">النسخة المصورة من سند الطلبية
+                                                (صيغة JPEG فقط):</label>
+                                            <label id="cautionForFile"
+                                                   class="d-none text-center col-form-label text-danger">حذاري!! بمجرد
+                                                الضغط على زر اختيار الصورة سيتم حذف الصورة السابقة لسند الطلبية
+                                                لاستبدالها بالجديدة</label>
+                                            <input dir="rtl" type="file" accept="image/jpeg" class="form-control"
+                                                   id="file"
+                                                   name="file" tabindex="3"/>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="modal-footer">
+                                        <button type="button" id="closeBtn" class="btn btn-sm btn-secondary"
+                                                data-dismiss="modal" tabindex="11">إغـــلاق
+                                        </button>
+                                        <input type="submit" class="btn btn-sm btn-primary" value="حفــــظ"
+                                               tabindex="10"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <!--                <div class="myForm">-->
+                <!--                    <form  >-->
+                <!--                        <div class="modal-draggable-icon modal fade" id="exampleModal1"-->
+                <!--                             role="dialog" aria-labelledby="exampleModalLabel"-->
+                <!--                             aria-hidden="true">-->
+                <!--                            <div class="modal-dialog" role="document">-->
+                <!--                                <div class="modal-content">-->
+                <!--                                    <div class="modal-header">-->
+                <!--                                        <h5 class="modal-title" id="exampleModalLabel1">حفظ/تعديل-->
+                <!--                                            التسجــيل</h5>-->
+                <!--                                        <button type="button" class="close" data-dismiss="modal"-->
+                <!--                                                aria-label="Close">-->
+                <!--                                            <span aria-hidden="true">&times;</span>-->
+                <!--                                        </button>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="modal-body">-->
+
+
+                <!--                                    </div>-->
+                <!--                                    <div class="modal-footer">-->
+                <!--                                        <button type="button" class="btn btn-sm btn-secondary"-->
+                <!--                                                data-dismiss="modal" tabindex="9">إغـــلاق-->
+                <!--                                        </button>-->
+                <!--                                        &lt;!&ndash;                                                    <input type="submit" id="submit" class="btn btn-sm btn-primary" value="حفــــظ"&ndash;&gt;-->
+                <!--                                        &lt;!&ndash;                                                           tabindex="8"/>&ndash;&gt;-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </form>-->
+                <!--                </div>-->
+
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title col-11 text-center">تأكــيد الحــذف</h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- 					<p class="alert alert-danger">Are you sure you want to delete -->
+                                <!-- 						it?</p> -->
+                                <p>هل أنت متأكد من الحذف ؟</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-secondary"
+                                        data-dismiss="modal">إغــلاق
+                                </button>
+                                <a href="" class="btn btn-sm btn-danger" id="delRef">حــذف</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-center text-gray-800">سنــــدات الطلبيــــة</h1>
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="mb-2 m-0 font-weight-bold text-primary">قائمة سنــــدات الطلبيــــة</h6>
+                        <div class="col text-center">
+                            <button class="btn btn-sm btn-lg btn-block btn-success newAddOrderBondBtn">إضافة
+                                سنــــد
+                                طلبيــــة
+                            </button>
+                            <!-- 			  <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table dir="rtl" class="table text-right table-striped table-bordered table-hover"
+                                   id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th class="d-none">ID</th>
+                                    <th style="width: 20px;"></th>
+                                    <th>رقم سند الطلبية</th>
+                                    <th>تاريخ سند الطلبية</th>
+                                    <th>حالة التسليم</th>
+                                    <th>نسخة من سند الطلبية</th>
+                                    <th style="min-width: 160px;"></th>
+
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th class="d-none">ID</th>
+                                    <th></th>
+                                    <th>رقم سند الطلبية</th>
+                                    <th>تاريخ سند الطلبية</th>
+                                    <th>حالة التسليم</th>
+                                    <th>نسخة من سند الطلبية</th>
+                                    <th></th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <tr th:each="orderBond:${orderBondList}">
+
+                                    <td class="d-none" th:text="${orderBond.id}">ID</td>
+                                    <td><a dir="ltr"
+                                           th:href="@{'OS_receivingEnterList/'+ 'id='+${orderBond.id}}"
+                                           class="btn btn-pill btn-success"><i class="fa fa-clipboard-list"></i></a>
+                                    </td>
+                                    <td th:text="${orderBond.orderNum}">رقم سند الطلبية</td>
+                                    <td th:text="${orderBond.orderDate}">تاريخ سند الطلبية</td>
+                                    <td dir="ltr" class="text-center" th:text="${orderBond.state}">حالة التسليم</td>
+                                    <td>
+                                        <a th:href="${orderBond.fileName}==''?@{'/img/'+noImage.png}:@{'/uploads/'+ ${orderBond.fileName}}"
+                                           data-lightbox="mygallery"
+                                           th:data-title="${orderBond.orderNum}+': سند طلبية رقم '"><img
+                                                th:src="${orderBond.fileName}==''?@{'/img/'+noImage.png}:@{'/uploads/'+ ${orderBond.fileName}}"
+                                                width="60" height="80"/></a>
+                                        <a id="imgToPrint" href="#"
+                                           th:onclick="|PrintImg('@{'/uploads/'+ ${orderBond.fileName}}'); return false;|"><i
+                                                class="fa fa-print" style="font-size: 22px;"></i></a>
+                                    </td>
+                                    <td class="align-middle">
+                                        <a dir="ltr" th:href="@{OS_findOrderBond/(id=${orderBond.id})}"
+                                           class="btn btn-sm btn-primary my-1 my-sm-0 editBtn"><span
+                                                class="fas fa-edit mr-1"></span>تعديل</a>
+                                        <a dir="ltr" th:href="@{OS_deleteOrderBond/(id=${orderBond.id})}"
+                                           class="btn btn-sm btn-danger my-1 my-sm-0 delBtn"><span
+                                                class="fas fa-trash mr-1"></span>حــذف</a>
+
+                                        <a id="toRecTable" dir="ltr" th:href="'/OS_orderBondRecords/id='+${orderBond.id}"
+                                           class="btn btn-sm btn-success btn-hover-text-warning my-1 my-sm-0"><span
+                                                class="fas fa-list-alt mr-1"></span> المستلزمـــات</a>
+
+<!--                                        <a id="toRecTable" th:href="'/orderBondRecords/id='+${orderBond.id}">test</a>-->
+
+                                    </td>
+
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+            <!-- /.container-fluid -->
+        </div>
+
+
+        <!-- End of Main Content -->
+    </div>
+    <!-- Footer -->
+        <div th:insert="fragments/footer::foot"></div>
+        <!-- End of Footer -->
+</div>
+<!-- End of Content Wrapper -->
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+</div>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+
+<script src="/js/lightbox-plus-jquery.min.js"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/jquery-ui.min.js"></script>
+
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="vendor/dataTables.fixedHeader.js"></script>
+
+
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/bootstrap-datepicker.ar.min.js" charset="UTF-8"></script>
+<script src="/js/bootstrap-select.min.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="js/orderBondList.js"></script>
+
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+
+<script type="text/javascript">
+    /**
+     * @return {string}
+     */
+    function SourcetoPrint(source) {
+        return "<html><head><script>function step1(){\n" +
+            "setTimeout('step2()', 10);}\n" +
+            "function step2(){window.print();window.close()}\n" +
+            "</scri" + "pt></head><body onload='step1()'>\n" +
+            "<img src='" + source + "'/><div class=" + '"loader-wrapper">' +
+            '<span class="loader"><span class="loader-inner"></span></span>' +
+            "</div>\n" +
+            "<script>" +
+            '$(window).on("load",function(){' +
+            '$(".loader-wrapper").fadeOut("slow");' +
+            "});\n" +
+            "</scri" + "pt>\n" +
+            '</body></html>";'
+    }
+
+    function PrintImg(source) {
+        if (source === '/uploads/')
+            return
+        else {
+            Pagelink = "about:blank";
+            var pwa = window.open(Pagelink, "_new");
+            pwa.document.open();
+            pwa.document.write(SourcetoPrint(source));
+            pwa.document.close();
+        }
+
+    }
+</script>
+<div class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <script>
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
+</body>
+
+</html>

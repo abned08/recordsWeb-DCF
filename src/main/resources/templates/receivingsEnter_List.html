@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+
+<head th:include="fragments/head :: myhead">
+</head>
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div th:insert="fragments/sidebar::mysidebar"></div>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav th:replace="fragments/navbar :: mynavbar">
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <div class="myForm">
+                    <form th:action="@{/saveReceivingEnter}" method="post" enctype="multipart/form-data"
+                          class="needs-validation" novalidate>
+                        <div class="modal-draggable-icon modal fade" id="exampleModal" tabindex="-1"
+                             role="dialog" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title col text-center" id="exampleModalLabel">حفظ/تعديل
+                                            بيان الاستـــلام</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group d-none">
+                                            <label for="Id" class="col-form-label">:الكود</label> <input
+                                                type="text" class="form-control" id="id" name="id"/>
+                                        </div>
+
+
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <label for="receive_enter_date" class="float-right col-form-label">:تاريخ
+                                                    بيان الاستلام</label>
+                                                <input dir="rtl" type="text" class="form-control"
+                                                       id="receive_enter_date"
+                                                       name="receive_enter_date" tabindex="2" required/>
+                                                <div class="invalid-feedback">
+                                                    يرجى تحديد تاريخ بيان الاستلام
+                                                </div>
+                                            </div>
+                                            <div class="form-group col">
+                                                <label class="float-right col-form-label">:رقم بيان استلام </label>
+                                                <input dir="rtl" type="text" class="form-control" id="receive_enter_num"
+                                                       name="receive_enter_num" tabindex="1" required/>
+                                                <div class="invalid-feedback">
+                                                    يرجى تحديد رقم بيان الاستلام
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!--                                        <div class="form-row">-->
+                                        <!--                                            <div class="form-group align-self-end col-md-1">-->
+                                        <!--                                                <button type="button" onclick="location.href='/serviceList'"-->
+                                        <!--                                                        class="btn btn-pill btn-success"><i class="fa fa-plus"></i>-->
+                                        <!--                                                </button>-->
+                                        <!--                                            </div>-->
+                                        <!--                                            <div class="form-group col-md-11">-->
+                                        <!--                                                <label for="servicename" class="float-right col-form-label">:المؤسسة-->
+                                        <!--                                                    أو الشركة أو المطبعة المسلمة-->
+                                        <!--                                                    المستلمة</label>-->
+                                        <!--                                                <select dir="ltr" id="servicename" class="form-control"-->
+                                        <!--                                                        th:field="${receivingEnter.servicesReceivingEnter.serviceid}"-->
+                                        <!--                                                        tabindex="3" required>-->
+                                        <!--                                                    <option value="">قم بتحديد مصلحة</option>-->
+                                        <!--                                                    <option th:each="service:${serReceivingNameList}"-->
+                                        <!--                                                            th:value="${service.serviceid}"-->
+                                        <!--                                                            th:text="${service.servicename}"></option>-->
+                                        <!--                                                </select>-->
+                                        <!--                                                <div class="invalid-feedback">-->
+                                        <!--                                                    حقـل ضــروي-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+
+
+                                        <!--                                        </div>-->
+
+
+                                        <div class="form-group">
+                                            <label for="deliver_enter_to" class="float-right col-form-label">:العون
+                                                المستلم</label>
+                                            <input dir="rtl" type="text" class="form-control" id="deliver_enter_to"
+                                                   name="deliver_enter_to" tabindex="4"/>
+                                            <div class="invalid-feedback">
+                                                يرجى ذكر اسم العون المستلم
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="d-none form-col">
+                                                <input type="text" class=" form-control" id="fName"
+                                                       name="fName"/>
+                                            </div>
+                                            <div class="d-none form-col">
+                                                <input type="text" class=" form-control" id="fPath"
+                                                       name="fPath"/>
+                                            </div>
+                                            <div class="d-none form-col">
+                                                <input type="text" class=" form-control" id="fType"
+                                                       name="fType"/>
+                                            </div>
+                                            <div class="d-none form-col">
+                                                <input type="text" class=" form-control" id="fSize"
+                                                       name="fSize"/>
+                                            </div>
+
+                                        </div>
+
+                                        <div dir="rtl" class="form-row" id="divFile">
+                                            <label for="file" id="fileLabel"
+                                                   class="float-right col-form-label">النسخة المصورة من بيان
+                                                الاستلام(صيغة JPEG فقط):</label>
+                                            <label id="cautionForFile"
+                                                   class="d-none text-center col-form-label text-danger">حذاري!! بمجرد
+                                                الضغط على زر اختيار الصورة سيتم حذف الصورة السابقة لبيان الاستلام
+                                                لاستبدالها بالجديدة</label>
+                                            <input dir="rtl" type="file" accept="image/jpeg" class="form-control"
+                                                   id="file"
+                                                   name="file" tabindex="5"/>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="modal-footer">
+                                        <button type="button" id="closeBtn" class="btn btn-sm btn-secondary"
+                                                data-dismiss="modal" tabindex="11">إغـــلاق
+                                        </button>
+                                        <input type="submit" class="btn btn-sm btn-primary" value="حفــــظ"
+                                               tabindex="10"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title col-12 text-center">تأكــيد الحــذف</h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- 					<p class="alert alert-danger">Are you sure you want to delete -->
+                                <!-- 						it?</p> -->
+                                <p>هل أنت متأكد من الحذف ؟</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-secondary"
+                                        data-dismiss="modal">إغــلاق
+                                </button>
+                                <a href="" class="btn btn-sm btn-danger" id="delRef">حــذف</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Page Heading -->
+                <a href="/orderBondList" class="btn btn-sm btn-primary my-1 my-sm-0 btn-arrow-left delBtn"
+                   aria-label="Left Align">
+                    <span class="fas fa-arrow-alt-circle-left" aria-hidden="true"></span>
+                    الرجوع لسند الطلبية
+                </a>
+                <h1 class="h3 mb-2 text-center text-gray-800">:سنــد الطلبيـــة</h1>
+                <div class="mr-5" dir="rtl" th:each="order: ${orderBond}">
+                    <div class="row ">
+                        <div class="col-3">
+                            <div class="row">
+                                <h5>رقم سند الطلبية: </h5>
+                                <h5 class="text-center mr-3 text-danger" th:text="${order.orderNum}"></h5>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="row">
+                                <h5>تاريخ سند الطلبية: </h5>
+                                <h5 class="text-center mr-3 text-danger" th:text="${order.orderDate}"></h5>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="mb-2 m-0 font-weight-bold text-primary">قائمة بيـــانات الاستــــلام</h6>
+                        <div class="col text-center">
+                            <button class="btn btn-sm btn-lg btn-block btn-success newAddReceivingEnterBtn">إضافة
+                                بيـــان
+                                استــــلام
+                            </button>
+                            <!-- 			  <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table dir="rtl" class="table text-right table-striped table-bordered table-hover"
+                                   id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th class="d-none">ID</th>
+                                    <th style="width: 20px;"></th>
+                                    <th>رقم بيان الاستلام</th>
+                                    <th>تاريخ بيان الاستلام</th>
+                                    <th>المؤسسة أو الشركة أو المطبعة</th>
+                                    <th>العون المسلتم</th>
+                                    <th>نسخة من بيان الاستلام</th>
+                                    <th style="min-width: 150px;"></th>
+
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th class="d-none">ID</th>
+                                    <th></th>
+                                    <th>رقم بيان الاستلام</th>
+                                    <th>تاريخ بيان الاستلام</th>
+                                    <th>المؤسسة أو الشركة أو المطبعة</th>
+                                    <th>العون المسلتم</th>
+                                    <th>نسخة من بيان الاستلام</th>
+                                    <th></th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <tr th:each="receivingEnter:${receiveEnterList}">
+
+                                    <td class="d-none" th:text="${receivingEnter.id}">ID</td>
+                                    <td><a dir="ltr"
+                                           th:href="@{'/findReceivingEnterToAddRecords/'+ 'id='+${receivingEnter.id}}"
+                                           class="btn btn-pill btn-success"><i class="fa fa-clipboard-list"></i></a>
+                                    </td>
+                                    <td th:text="${receivingEnter.receive_enter_num}">رقم بيان الاستلام</td>
+                                    <td th:text="${receivingEnter.receive_enter_date}">تاريخ بيان الاستلام</td>
+                                    <td th:text="${receivingEnter.servicesReceivingEnter.servicename}">المؤسسة أو الشركة
+                                        أو
+                                        المطبعة
+                                        المسلمة
+                                    </td>
+                                    <td class="text-center" th:text="${receivingEnter.deliver_enter_to}">العون
+                                        المسلتم
+                                    </td>
+                                    <td>
+                                        <a th:href="${receivingEnter.fileName}==''?@{'/img/'+noImage.png}:@{'/uploads/'+ ${receivingEnter.fileName}}"
+                                           data-lightbox="mygallery"
+                                           th:data-title="${receivingEnter.receive_enter_num}+': بيان استلام رقم '"><img
+                                                th:src="${receivingEnter.fileName}==''?@{'/img/'+noImage.png}:@{'/uploads/'+ ${receivingEnter.fileName}}"
+                                                width="60" height="80"/></a>
+                                        <a id="imgToPrint" href="#"
+                                           th:onclick="|PrintImg('@{'/uploads/'+ ${receivingEnter.fileName}}'); return false;|"><i
+                                                class="fa fa-print" style="font-size: 22px;"></i></a>
+                                    </td>
+                                    <td class="align-middle">
+                                        <a dir="ltr" th:href="@{/findReceivingEnter/(id=${receivingEnter.id})}"
+                                           class="btn btn-sm btn-primary my-1 my-sm-0 editBtn"><span
+                                                class="fas fa-edit mr-1"></span>تعديل</a>
+
+                                        <a dir="ltr" th:if="${receivingEnter.records.size()<1}" th:href="@{/deleteReceivingEnter/(id=${receivingEnter.id})}"
+                                           class="btn btn-sm btn-danger my-1 my-sm-0 delBtn"><span
+                                                class="fas fa-trash mr-1"></span>حــذف</a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                </form>
+                <!-- /.container-fluid -->
+
+
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <div th:insert="fragments/footer::foot"></div>
+                <!-- End of Footer -->
+            </div>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+</div>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+
+<script src="/js/lightbox-plus-jquery.min.js"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/jquery-ui.min.js"></script>
+
+
+<!-- Core plugin JavaScript-->
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+<!-- Custom scripts for all pages-->
+<script src="/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/vendor/dataTables.fixedHeader.js"></script>
+
+
+<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/bootstrap-datepicker.ar.min.js" charset="UTF-8"></script>
+<script src="/js/bootstrap-select.min.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="/js/receivingEnterList.js"></script>
+
+
+<!-- Page level custom scripts -->
+<script src="/js/demo/datatables-demo.js"></script>
+
+<script type="text/javascript">
+    /**
+     * @return {string}
+     */
+    function SourcetoPrint(source) {
+        return "<html><head><script>function step1(){\n" +
+            "setTimeout('step2()', 10);}\n" +
+            "function step2(){window.print();window.close()}\n" +
+            "</scri" + "pt></head><body onload='step1()'>\n" +
+            "<img src='" + source + "'/><div class=" + '"loader-wrapper">' +
+            '<span class="loader"><span class="loader-inner"></span></span>' +
+            "</div>\n" +
+            "<script>" +
+            '$(window).on("load",function(){' +
+            '$(".loader-wrapper").fadeOut("slow");' +
+            "});\n" +
+            "</scri" + "pt>\n" +
+            '</body></html>";'
+    }
+
+    function PrintImg(source) {
+        if (source === '/uploads/')
+            return
+        else {
+            Pagelink = "about:blank";
+            var pwa = window.open(Pagelink, "_new");
+            pwa.document.open();
+            pwa.document.write(SourcetoPrint(source));
+            pwa.document.close();
+        }
+
+    }
+</script>
+
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
+<script>
+    $(window).on("load", function () {
+        $(".loader-wrapper").fadeOut("slow");
+    });
+</script>
+</body>
+
+</html>
