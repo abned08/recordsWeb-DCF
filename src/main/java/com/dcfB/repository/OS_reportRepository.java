@@ -1,7 +1,6 @@
 package com.dcfB.repository;
 
 import com.dcfB.model.OS_Report;
-import com.dcfB.model.Report;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

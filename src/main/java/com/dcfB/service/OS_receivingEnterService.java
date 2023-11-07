@@ -2,7 +2,6 @@ package com.dcfB.service;
 
 import com.dcfB.model.*;
 import com.dcfB.repository.OS_receivingEnterRepository;
-import com.dcfB.repository.receivingEnterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,6 @@
 package com.dcfB.model;
 
 import javax.persistence.*;
-import java.math.BigInteger;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Report {

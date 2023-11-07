@@ -2,10 +2,8 @@ package com.dcfB.controller;
 
 import com.dcfB.model.Establishment;
 import com.dcfB.model.OS_Report;
-import com.dcfB.model.Report;
 import com.dcfB.service.OS_reportService;
 import com.dcfB.service.establishmentService;
-import com.dcfB.service.reportService;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.HtmlExporter;

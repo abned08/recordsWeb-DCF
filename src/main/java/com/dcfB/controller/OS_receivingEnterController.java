@@ -76,7 +76,7 @@ public class OS_receivingEnterController {
             Format formatter = new SimpleDateFormat("yyyy-MM-dd--HH-mm-ss");
             Date date = new Date();
             String s = formatter.format(date);
-            String fileName = file.getOriginalFilename();
+            // String fileName = file.getOriginalFilename();
             String fNameWithDate = fName + s + ".jpg";
             String filePath = Paths.get(uploadDirectory, fNameWithDate).toString();
             String fileType = file.getContentType();

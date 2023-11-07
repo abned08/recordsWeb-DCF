@@ -2,8 +2,6 @@ package com.dcfB.repository;
 
 import com.dcfB.model.OS_Receiving;
 import com.dcfB.model.OS_Records;
-import com.dcfB.model.Receiving;
-import com.dcfB.model.Records;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,8 +1,6 @@
 package com.dcfB.repository;
 
-import com.dcfB.model.Records;
 import com.dcfB.model.Services;
-import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

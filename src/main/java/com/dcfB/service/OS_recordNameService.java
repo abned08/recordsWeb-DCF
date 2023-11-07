@@ -2,12 +2,8 @@ package com.dcfB.service;
 
 import com.dcfB.model.OS_RecordName;
 import com.dcfB.model.OS_Records;
-import com.dcfB.model.RecordName;
-import com.dcfB.model.Records;
 import com.dcfB.repository.OS_recordNameRepository;
 import com.dcfB.repository.OS_recordsRepository;
-import com.dcfB.repository.recordNameRepository;
-import com.dcfB.repository.recordsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

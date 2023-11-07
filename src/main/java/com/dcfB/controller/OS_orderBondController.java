@@ -6,7 +6,6 @@ import com.dcfB.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,8 +34,8 @@ public class OS_orderBondController {
     private OS_recordsService recService;
     @Autowired
     private OS_recordNameService recNameService;
-    @Autowired
-    private OS_receivingEnterService rEnterService;
+    // @Autowired
+    // private OS_receivingEnterService rEnterService;
 
     @RequestMapping("/OS_orderBondList")
     public String OS_vieworderBond(Model model, @ModelAttribute("orderBond") OS_OrderBond orderBond) {
@@ -70,7 +69,7 @@ public class OS_orderBondController {
             Format formatter = new SimpleDateFormat("yyyy-MM-dd--HH-mm-ss");
             Date date = new Date();
             String s = formatter.format(date);
-            String fileName = file.getOriginalFilename();
+            // String fileName = file.getOriginalFilename();
             String fNameWithDate = fName + s + ".jpg";
             String filePath = Paths.get(uploadDirectory, fNameWithDate).toString();
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));

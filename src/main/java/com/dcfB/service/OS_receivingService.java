@@ -2,10 +2,7 @@ package com.dcfB.service;
 
 import com.dcfB.model.OS_Receiving;
 import com.dcfB.model.OS_Records;
-import com.dcfB.model.Receiving;
-import com.dcfB.model.Records;
 import com.dcfB.repository.OS_receivingRepository;
-import com.dcfB.repository.receivingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

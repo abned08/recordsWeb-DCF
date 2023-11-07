@@ -2,15 +2,8 @@ package com.dcfB.service;
 
 import com.dcfB.model.Report;
 import com.dcfB.repository.reportRepository;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.math.BigInteger;
 import java.util.*;
 
 @Service

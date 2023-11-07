@@ -1,9 +1,7 @@
 package com.dcfB.service;
 
 import com.dcfB.model.OS_Report;
-import com.dcfB.model.Report;
 import com.dcfB.repository.OS_reportRepository;
-import com.dcfB.repository.reportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

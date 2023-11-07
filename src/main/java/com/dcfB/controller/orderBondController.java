@@ -4,7 +4,6 @@ import com.dcfB.exception.MyFileNotFoundException;
 import com.dcfB.model.*;
 import com.dcfB.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +34,8 @@ public class orderBondController {
     private recordsService recService;
     @Autowired
     private recordNameService recNameService;
-    @Autowired
-    private receivingEnterService rEnterService;
+    // @Autowired
+    // private receivingEnterService rEnterService;
 
     @RequestMapping("/orderBondList")
     public String vieworderBond(Model model, @ModelAttribute("orderBond") OrderBond orderBond) {
@@ -71,7 +70,7 @@ public class orderBondController {
             Format formatter = new SimpleDateFormat("yyyy-MM-dd--HH-mm-ss");
             Date date = new Date();
             String s = formatter.format(date);
-            String fileName = file.getOriginalFilename();
+            // String fileName = file.getOriginalFilename();
             String fNameWithDate = fName + s + ".jpg";
             String filePath = Paths.get(uploadDirectory, fNameWithDate).toString();
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
