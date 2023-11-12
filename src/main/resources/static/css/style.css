@@ -125,7 +125,7 @@ body.sidebar-toggled #wrapper #content-wrapper {
 
 #cYear {
   border-radius: 5px;
-  max-width: 45px;
+  max-width: 58px;
   display: inline-block;
   margin-right: 10px;
   background-color: gold;
@@ -212,4 +212,25 @@ body.sidebar-toggled #wrapper #content-wrapper {
   50% { height: 100%;}
   75% { height: 100%;}
   100% { height: 0%;}
+}
+.input-group {
+  direction:rtl !important;
+}
+
+.input-group-append:last-child >.btn {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+  border-right-width:0px !important;
+  border-left-width:1px !important;
+
+}
+
+.input-group :first-child {
+   border-top-right-radius: 4px !important;
+   border-bottom-right-radius: 4px !important;
+   border-top-left-radius: 0px !important;
+   border-bottom-left-radius: 0px !important;
+
 }

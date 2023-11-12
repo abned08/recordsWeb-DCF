@@ -211,7 +211,7 @@
                                     <th>رقم الجرد</th>
                                     <th style="width: 150px;">المصلحة</th>
                                     <th class="d-none" style="width: 65px;"></th>
-
+                                    <th class="d-none">التسمية</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
@@ -224,6 +224,7 @@
                                     <th>رقم الجرد</th>
                                     <th>المصلحة</th>
                                     <th class="d-none"></th>
+                                    <th class="d-none">التسمية</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
@@ -250,6 +251,7 @@
                                         <!--                                           class="btn btn-sm btn-danger my-1 my-sm-0 delBtn"><span-->
                                         <!--                                                class="fas fa-trash mr-1"></span>حــذف</a>-->
                                     </td>
+                                    <td class="d-none" th:text="${records.recordName.recname}">التسمية</td>
                                 </tr>
 
                                 </tbody>

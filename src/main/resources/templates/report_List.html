@@ -99,33 +99,38 @@
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-                    <div dir="rtl" th:object="${dateOfReport}"  class="w-100 mt-3" align="center">
+                    <div dir="rtl" th:object="${dateOfReport}"  class="w-100 mt-3 d-flex justify-content-center">
                         <h3 class="text-primary font-weight-bold">    تاريخ التقـــــرير
                             <span class="text-danger font-weight-bold" th:text="${dateOfReport}?${dateOfReport}:'* * *'"></span>
                         </h3>
                     </div>
-                    <div id="date-container" class="span5 col-md-5">
-                        <form id="dateForm" th:action="@{/dateReport}" method="post" class="dateForm needs-validation" novalidate>
-                            <h6 class="mb-2 m-3 font-weight-bold text-primary">تاريخ التقريــر</h6>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="dateReport" name="dateReport"
-                                       placeholder="حدد تاريخ التقرير" required/>
+                    <div id="date-container" class="w-100 mt-3 d-flex justify-content-center">
+                        <form  id="dateForm" th:action="@{/dateReport}" method="post" class="dateForm needs-validation" novalidate>
+                            <h6 class="mb-2 m-3 font-weight-bold text-primary row justify-content-end">تاريخ التقريــر</h6>
+                            <div class="input-group" >
+                                       <input type="text" class="form-control" id="dateReport" name="dateReport"
+                                       placeholder="مــــــن" required/>
+                                       
+                                       <input type="text" class="form-control" id="dateReport" name="dateReport"
+                                       placeholder="إلــــــى" required/>
+
 
                                 <div class="input-group-append">
-                                    <button href type="submit" class="btn btn-sm btn-primary font-weight-bold" style="line-height: 1;">عــرض
+                                    <button href type="submit" class=" btn-sm btn-primary font-weight-bold" style="line-height: 1;">عــرض
                                         التقـرير
                                     </button>
-                                    <a href="/report" class="btn btn-accent-1" role="button" target="_blank" data-toggle="tooltip" data-placement="top"
-                                       title="طباعة التقرير"><i class="fas fa-fw fa-print"></i></a>
-
+                                    <a href="/report" class="btn btn-accent-1" style="min-width: 66px;"  role="button" target="_blank" data-toggle="tooltip" data-placement="top"
+                                    title="طباعة التقرير"><i class="fas fa-fw fa-print"></i></a>
 
                                 </div>
+
+
                             </div>
                         </form>
 
-                        <div class="col text-center">
+                        <!-- <div class="col text-center"> -->
                             <!-- 			  <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> -->
-                        </div>
+                        <!-- </div> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

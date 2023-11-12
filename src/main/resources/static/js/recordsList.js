@@ -226,7 +226,7 @@ $('select').selectpicker();
                     var that = this;
                     var title = $(this).text();
                     var column = this;
-                    var select = $('<input data-placement="top" data-toggle="tooltip" id="cYear" maxlength="4"  placeholder="فلترة بالسنوات"  title="فلترة بالسنوات"  type="text" pattern="\d{4}" dir="rtl" onkeypress="return event.charCode>=48 && event.charCode<=57" required/>')
+                    var select = $('<input type="number" data-placement="top" data-toggle="tooltip" id="cYear" maxlength="4"  placeholder="فلترة بالسنوات"  title="فلترة بالسنوات"  pattern="\d{4}" dir="rtl" onkeypress="return event.charCode>=48 && event.charCode<=57" required/>')
                         .appendTo($(column.header())).on('change keyup', function () {
                             if (that.search() !== this.value) {
                                 that
