@@ -33,10 +33,10 @@ public class reportService {
         repo.deleteAll();
     }
 
-    public void fillReport(String dateReport) {
+    public void fillReport(String dateReport,String dateReportEnd) {
         repo.deleteAll();
 
-        List<Object[]> list = repo.listReport(dateReport);
+        List<Object[]> list = repo.listReport(dateReport, dateReportEnd);
         for (Object[] record : list) {
             Report rp = new Report();
             rp.setRecordName((String) record[0]);

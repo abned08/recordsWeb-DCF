@@ -29,6 +29,7 @@ public class reportController {
     private establishmentService estService;
 
     String dateR="";
+    String dateREnd="";
 
     @RequestMapping(value = "/reportList")
     public String viewReport(Model model) {
@@ -48,9 +49,10 @@ public class reportController {
 
 
     @PostMapping("/dateReport")
-    public String showReportByDay(HttpServletResponse response,@RequestParam(name = "dateReport") String dateReport) {
-        rpservice.fillReport(dateReport);
+    public String showReportByDay(HttpServletResponse response,@RequestParam(name = "dateReport") String dateReport, @RequestParam(name = "dateReportEnd") String dateReportEnd) {
+        rpservice.fillReport(dateReport, dateReportEnd);
         dateR=dateReport;
+        dateREnd= dateReportEnd;
         return "redirect:/reportList";
     }
 
