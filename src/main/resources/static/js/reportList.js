@@ -11,6 +11,8 @@ $(document).ready(function(){
         this.value = this.value.replace(/[^0-9]/g, '');
     });
 
+    $('#dateReportEnd').val(new Date().toISOString().split('T')[0]);
+
     // var t=document.getElementById('establishment').innerHTML
     // $('#establishmentCopy').text(t);
 
@@ -62,7 +64,8 @@ $(document).ready(function(){
                 footer : false,
                 headerOffset: 0
             },
-            order: [[1, 'asc']],lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'الكل']],
+            order: [[2, 'asc']],
+            lengthMenu: [[ -1,10, 25, 50], [ 'الكل',10, 25, 50]],
 
         "language": {
 
@@ -86,9 +89,9 @@ $(document).ready(function(){
 
     } );
 
-
+        
     $('#date-container input').datepicker({
-        format: "yyyy/mm/dd",
+        format: "yyyy-mm-dd",
         todayBtn: "linked",
         clearBtn: true,
         language: "ar",

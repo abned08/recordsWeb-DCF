@@ -41,6 +41,7 @@ public class reportController {
         else{
             reportList = rpservice.listAll();
             model.addAttribute("dateOfReport", dateR);
+            model.addAttribute("dateOfReportEnd", dateREnd);
         }
         model.addAttribute("reportList", reportList);
         model.addAttribute("title","التقـــرير");
