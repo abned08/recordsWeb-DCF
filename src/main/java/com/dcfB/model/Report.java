@@ -10,6 +10,7 @@ public class Report {
     private Long id;
     private String recordName;
     private String code;
+    private Integer quantityThisYear;    
     private Integer quantity;
     private Integer quantityDemand;
     private String note;
@@ -41,6 +42,14 @@ public class Report {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+        public Integer getQuantityThisYear() {
+        return quantityThisYear;
+    }
+
+    public void setQuantityThisYear(Integer quantityThisYear) {
+        this.quantityThisYear = quantityThisYear;
     }
 
     public Integer getQuantity() {

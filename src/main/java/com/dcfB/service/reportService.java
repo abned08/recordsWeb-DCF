@@ -4,6 +4,8 @@ import com.dcfB.model.Report;
 import com.dcfB.repository.reportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigInteger;
 import java.util.*;
 
 @Service
@@ -41,7 +43,8 @@ public class reportService {
             Report rp = new Report();
             rp.setRecordName((String) record[0]);
             rp.setCode((String) record[1]);
-            rp.setQuantity(((Long) record[2]).intValue());
+            rp.setQuantityThisYear(((BigInteger) record[2]).intValue());
+            rp.setQuantity(((BigInteger) record[3]).intValue());
             rp.setQuantityDemand(0);
             rp.setNote("");
             repo.save(rp);

@@ -141,6 +141,7 @@
                                     <th class="d-none">ID</th>
                                     <th>تعيين وتسمية المطبوعات</th>
                                     <th>الرمز</th>
+                                    <th>الكمية خلال الفترة</th>
                                     <th>الكمية المتوفرة</th>
                                     <th>الكمية المطلوبة</th>
                                     <th>ملاحظــة</th>
@@ -153,6 +154,7 @@
                                     <th class="d-none">ID</th>
                                     <th>تعيين وتسمية المطبوعات</th>
                                     <th>الرمز</th>
+                                    <th>الكمية خلال الفترة</th>
                                     <th>الكمية المتوفرة</th>
                                     <th>الكمية المطلوبة</th>
                                     <th>ملاحظــة</th>
@@ -164,6 +166,7 @@
                                     <td class="d-none" th:text="${report.id}">ID</td>
                                     <td th:text="${report.recordName}">تعيين وتسمية المطبوعات</td>
                                     <td th:text="${report.code}">الرمز</td>
+                                    <td class="text-center" th:text="${report.quantityThisYear}">الكمية خلال الفترة</td>
                                     <td class="text-center" th:text="${report.quantity}">الكمية المتوفرة</td>
                                     <td class="text-center"
                                         th:text="${report.quantityDemand}?${report.quantityDemand}:''">الكمية المطلوبة
