@@ -1,8 +1,3 @@
-/**
- *
- */
-
-
 $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip();
@@ -28,6 +23,7 @@ $(document).ready(function(){
                 $('.myForm #recordName').val(report.recordName);
                 $('.myForm #code').val(report.code);
                 $('.myForm #quantity').val(report.quantity);
+                $('.myForm #quantityThisYear').val(report.quantityThisYear);
                 $('.myForm #quantityDemand').val(report.quantityDemand?report.quantityDemand!==0:'');
                 $('.myForm #note').val(report.note);
             });
@@ -39,6 +35,7 @@ $(document).ready(function(){
             $('.myForm #recordName').val('');
             $('.myForm #code').val('');
             $('.myForm #quantity').val('');
+            $('.myForm #quantityThisYear').val('');
             $('.myForm #quantityDemand').val('');
             $('.myForm #note').val('');
 
@@ -110,6 +107,21 @@ $(document).ready(function(){
         $(this).prop('readonly', false);
     });
 
+
+});
+
+$(document).on("click", "#print", function() {
+    fetch('http://localhost:8080/report')
+    .then(response => response.text())
+    .then(data => {
+        var mywindow = window.open('', 'طباعة التقرير', 'height=600,width=800');
+        mywindow.document.write(data);    
+        mywindow.document.close(); 
+        mywindow.focus(); 
+        mywindow.print();
+        mywindow.close();
+        return true;
+    });
 
 });
 
