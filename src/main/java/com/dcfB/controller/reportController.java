@@ -83,6 +83,7 @@ public class reportController {
 
 
         parameters.put("dateReport", dateR);
+        parameters.put("dateReportEnd", dateREnd);
         parameters.put("establishment", estService.getLast().getEstname());
 
         JasperPrint jasperPrint=JasperFillManager.fillReport(jasperReport,parameters,dataSource);
