@@ -110,11 +110,14 @@
                             <span  class="text-danger font-weight-bold" th:text="${dateOfReport}?' مــن '+${dateOfReport}+' إلــى '+${dateOfReportEnd}:'* * *'"></span>
                         </h3>
                     </div>
-                    <div id="date-container" class="w-100 mt-3 d-flex justify-content-center">
+                    <div id="date-container" class="w-100 mt-3 d-flex justify-content-around align-items-end">
+                        <button class="btn btn-accent-1" id="print" style="min-width:115px; height: fit-content;"  role="button" data-toggle="tooltip" data-placement="top"
+                        title="طباعة التقرير"><i class="fas fa-fw fa-print"></i></button>
+
                         <form  id="dateForm" th:action="@{/dateReport}" method="post" class="dateForm needs-validation" novalidate>
                             <h6 class="mb-2 m-3 font-weight-bold text-primary row justify-content-end">:التاريخ</h6>
                             <div class="input-group" >
-                                       <input type="text" class="form-control" id="dateReport" name="dateReport"
+                                       <input type="text" class="fromInput form-control" id="dateReport" name="dateReport"
                                        placeholder="مــــــن" required/>
                                        
                                        <input type="text" class="form-control"  id="dateReportEnd" name="dateReportEnd"
@@ -122,7 +125,7 @@
 
 
                                 <div class="input-group-append">
-                                    <button type="submit" class=" btn-sm btn-primary font-weight-bold" style="line-height: 1;">عــرض
+                                    <button type="submit" class="btnCustom btn-sm btn-primary font-weight-bold" style="line-height: 1;">عــرض
                                         التقـرير
                                     </button>
 
@@ -131,8 +134,6 @@
 
                             </div>
                         </form>
-                        <button class="btn btn-accent-1" id="print" style="min-width: 66px;"  role="button" target="_blank" data-toggle="tooltip" data-placement="top"
-                        title="طباعة التقرير"><i class="fas fa-fw fa-print"></i></button>
 
 
                         <!-- <div class="col text-center"> -->

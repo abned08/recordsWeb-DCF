@@ -217,7 +217,7 @@ body.sidebar-toggled #wrapper #content-wrapper {
   direction:rtl !important;
 }
 
-.input-group-append:last-child >.btn {
+.input-group-append >.btnCustom {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-top-left-radius: 4px !important;
@@ -227,7 +227,7 @@ body.sidebar-toggled #wrapper #content-wrapper {
 
 }
 
-.input-group :first-child {
+.input-group .fromInput {
    border-top-right-radius: 4px !important;
    border-bottom-right-radius: 4px !important;
    border-top-left-radius: 0px !important;
