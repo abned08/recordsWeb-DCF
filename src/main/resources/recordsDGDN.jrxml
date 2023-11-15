@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recordsDGDN" pageWidth="595" pageHeight="1000" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3b928731-0da9-4645-bec3-4755e9daf93a">
+
+
 	<parameter name="rn" class="java.lang.Integer"/>
 	<parameter name="JasperCustomSubReportLocation" class="net.sf.jasperreports.engine.JasperReport"/>
 	<parameter name="JasperCustomSubReportDatasource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="establishment" class="java.lang.String"/>
-	<field name="id" class="java.lang.Integer"/>
-	<field name="deliver_date" class="java.lang.String"/>
-	<field name="deliver_to" class="java.lang.String"/>
-	<field name="memo_date" class="java.lang.String"/>
-	<field name="memo_num" class="java.lang.Integer"/>
-	<field name="mo_date" class="java.lang.String"/>
-	<field name="mo_num" class="java.lang.String"/>
-	<field name="receive_date" class="java.lang.String"/>
-	<field name="receive_num" class="java.lang.Integer"/>
-	<field name="servicesReceiving.servicename" class="java.lang.String"/>
+
+	<field name="id" class="java.lang.Integer">
+	</field>
+	<field name="deliver_date" class="java.lang.String">
+	</field>
+	<field name="deliver_to" class="java.lang.String">
+	</field>
+	<field name="memo_date" class="java.lang.String">
+	</field>
+	<field name="memo_num" class="java.lang.Integer">
+	</field>
+	<field name="mo_date" class="java.lang.String">
+	</field>
+	<field name="mo_num" class="java.lang.String">
+	</field>
+	<field name="receive_date" class="java.lang.String">
+	</field>
+	<field name="receive_num" class="java.lang.Integer">
+	</field>
+	<field name="servicesReceiving.servicename" class="java.lang.String">
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
+
 	<title>
 		<band height="252" splitType="Stretch">
 			<ellipse>
@@ -51,6 +65,13 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{establishment}]]></textFieldExpression>
 			</textField>
+<!--			<staticText>-->
+<!--				<reportElement x="370" y="83" width="174" height="20" uuid="2702c947-e04a-41f2-b3d3-cc721977e19b"/>-->
+<!--				<textElement textAlignment="Right" verticalAlignment="Top">-->
+<!--					<font fontName="Arial" size="16"/>-->
+<!--				</textElement>-->
+<!--				<text><![CDATA[نيابة مديرية الوسائل والميزانية]]></text>-->
+<!--			</staticText>-->
 			<staticText>
 				<reportElement x="217" y="122" width="120" height="27" uuid="879e7f30-8e73-4d98-8e54-dcef074f65b4"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
@@ -100,14 +121,12 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{receive_date}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="320" y="190" width="68" height="20" uuid="b1dafdcc-24d6-4089-8aca-a227efdc36a0">
-					<property name="net.sf.jasperreports.style.isBlankWhenNull" value="true"/>
-				</reportElement>
+			<textField >
+				<reportElement x="320" y="190" width="40" height="20" uuid="b1dafdcc-24d6-4089-8aca-a227efdc36a0"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="16"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{memo_num}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{memo_num}.equals(0) ? "" : $F{memo_num}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="190" width="144" height="20" uuid="fc3ce492-8f9e-481f-bcb6-b0f9a288057a"/>
@@ -131,7 +150,7 @@
 				<text><![CDATA[رقـــــم:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="388" y="190" width="92" height="20" uuid="0206521c-1f31-4a7c-8c06-ecd08c5fcead"/>
+				<reportElement x="360" y="190" width="120" height="20" uuid="0206521c-1f31-4a7c-8c06-ecd08c5fcead"/>
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Arial" size="16"/>
 				</textElement>
@@ -139,6 +158,9 @@
 			</staticText>
 		</band>
 	</title>
+
+
+
 	<detail>
 		<band height="51" splitType="Stretch">
 			<subreport>
@@ -147,10 +169,12 @@
 					<subreportParameterExpression><![CDATA[$P{rn}]]></subreportParameterExpression>
 				</subreportParameter>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource ($P{JasperCustomSubReportDatasource}.getData())]]></dataSourceExpression>
-				<subreportExpression><![CDATA[$P{JasperCustomSubReportLocation}]]></subreportExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{JasperCustomSubReportLocation}]]></subreportExpression>
 			</subreport>
 		</band>
+
 	</detail>
+
 	<summary>
 		<band height="123" splitType="Stretch">
 			<staticText>
@@ -165,21 +189,21 @@
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Arial" size="16"/>
 				</textElement>
-				<text><![CDATA[ سلـــم يوم:]]></text>
+				<text><![CDATA[سلـــم يوم:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="470" y="25" width="80" height="25" uuid="8dff9b5e-aabc-46e0-a537-64422e59c3d0"/>
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Arial" size="16"/>
 				</textElement>
-				<text><![CDATA[ اللقب والاسم:]]></text>
+				<text><![CDATA[اللقب والاسم:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="460" y="45" width="90" height="25" uuid="c1baf7ad-1db4-4fdb-91bd-494aac888303"/>
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Arial" size="16"/>
 				</textElement>
-				<text><![CDATA[ أمر بمهمة رقم:]]></text>
+				<text><![CDATA[أمر بمهمة رقم:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="304" y="45" width="46" height="25" uuid="ff1ee38e-5886-4de6-bca7-c520865d784b"/>
@@ -196,7 +220,7 @@
 				<textFieldExpression><![CDATA[$F{deliver_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="70" y="25" width="400" height="25" uuid="2f267908-2314-43bf-9c19-533e3bd7ad0e"/>
+				<reportElement x="290" y="25" width="180" height="25" uuid="2f267908-2314-43bf-9c19-533e3bd7ad0e"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="16"/>
 				</textElement>
@@ -225,4 +249,5 @@
 			</staticText>
 		</band>
 	</summary>
+
 </jasperReport>
